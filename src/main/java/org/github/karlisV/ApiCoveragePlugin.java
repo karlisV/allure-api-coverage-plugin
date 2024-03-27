@@ -49,7 +49,7 @@ public class ApiCoveragePlugin  extends CommonJsonAggregator2 implements Reader 
                 final Map info = context.getValue().readValue(is, Map.class);
                 visitor.visitExtra(BLOCK_NAME, info);
             } catch (IOException e) {
-                visitor.error("Could not read launch file " + performanceFile, e);
+                visitor.error("Could not read coverage file " + performanceFile, e);
             }
         }
     }
