@@ -7,6 +7,7 @@ Usage:
 3) The file should be in this format (all keys are mandatory):
 ```json
 {
+  "coverage": 99.99,
   "documented_endpoints": [
     {
       "url": "GET /foo",
@@ -39,8 +40,6 @@ Usage:
       "url": "PUT /_/bar",
       "hit_count": 1
     }
-  ],
-  "coverage": 99.99
+  ]
 }
-
 ```
