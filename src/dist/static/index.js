@@ -11,7 +11,7 @@ class CoverageHelpers {
             const fullPath = parts[1];
             const rootPathSegment = fullPath.split('/')[1];
             const rootPath = rootPathSegment ? rootPathSegment.toUpperCase() : 'ROOT';
-
+    
             if (!acc[rootPath]) {
                 acc[rootPath] = { endpoints: [], endpointCoverageCount: 0, totalEndpoints: 0 };
             }
@@ -20,12 +20,12 @@ class CoverageHelpers {
                 path: fullPath,
                 hitCount: endpoint.hit_count
             });
-
+            
             if (endpoint.hit_count > 0) {
                 acc[rootPath].endpointCoverageCount += 1;
             }
             acc[rootPath].totalEndpoints += 1;
-
+    
             return acc;
         }, {});
 
@@ -50,7 +50,7 @@ const template = function (data) {
 
     Object.keys(documentedEndpointsBySection).sort().forEach(section => {
         const { endpoints, endpointCoverageCount, totalEndpoints } = documentedEndpointsBySection[section];
-        let sectionClass = 'red';
+        let sectionClass = 'red'; 
         if (endpointCoverageCount === totalEndpoints) {
             sectionClass = 'green';
         } else if (endpointCoverageCount > 0) {
@@ -77,7 +77,7 @@ const template = function (data) {
     })
     html += `</ul></div>`;
 
-    html += "</div>";
+    html += "</div>"; 
     return html;
 };
 

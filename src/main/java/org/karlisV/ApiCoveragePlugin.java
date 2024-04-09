@@ -20,21 +20,19 @@ public class ApiCoveragePlugin  extends CommonJsonAggregator2 implements Reader 
     private static final String JSON_FILE_NAME = "coverage.json";
 
     public ApiCoveragePlugin() {
-        super(Constants.DATA_DIR, JSON_FILE_NAME);
+        super(JSON_FILE_NAME);
     }
 
     @Override
-    public Map getData(List<LaunchResults> launches) {
-        return launches.stream()
-                .map(this::getCoverageInfo)
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .reduce((first, second) -> second) // This gets the last element
-                .orElse(new HashMap<>()); // In case there's no coverage info, return an empty map
+    public Map getData(List<LaunchResults> results) {
+        for(LaunchResults result : results){
+            Optional<Map> optionalCoverageInfo = getCoverageInfo(result);
+            if (optionalCoverageInfo.isPresent()) {
+                return optionalCoverageInfo.get();
+            }
+        }
+        return new HashMap<>();
     }
-
-
-
 
     @Override
     public void readResults(final Configuration configuration,
