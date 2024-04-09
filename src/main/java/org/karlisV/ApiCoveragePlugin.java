@@ -1,7 +1,6 @@
 package org.karlisV;
 
-import io.qameta.allure.CommonJsonAggregator2;
-import io.qameta.allure.Constants;
+import io.qameta.allure.CommonJsonAggregator;
 import io.qameta.allure.Reader;
 import io.qameta.allure.context.JacksonContext;
 import io.qameta.allure.core.Configuration;
@@ -14,7 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
-public class ApiCoveragePlugin  extends CommonJsonAggregator2 implements Reader {
+public class ApiCoveragePlugin  extends CommonJsonAggregator implements Reader {
 
     private static final String BLOCK_NAME = "coverage";
     private static final String JSON_FILE_NAME = "coverage.json";
